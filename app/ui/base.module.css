@@ -1,0 +1,26 @@
+
+.shape {
+  height: 0;
+  width: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 30px solid black;
+}
+.background_layout_grey {
+  background-image: url('../../public/background-world-grey.jpeg');
+  /* background-image: url('../../public/grafico-soporte-global-continente-mapa-mundo.jpg'); */
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.background_name_section {
+  background-image: url('../../public/grafico-soporte-global-continente-mapa-mundo.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.background_detail {
+  background-image: url('../../public/world-paint-gray.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+

@@ -1,58 +1,36 @@
-import {
-  BanknotesIcon,
-  ClockIcon,
-  UserGroupIcon,
-  InboxIcon,
-} from '@heroicons/react/24/outline';
-import { lusitana } from '@/app/ui/fonts';
+import { montserrat } from '@/app/ui/fonts';
+import { Country } from '@/app/lib/definitions';
+import Link from 'next/link';
 
-const iconMap = {
-  collected: BanknotesIcon,
-  customers: UserGroupIcon,
-  pending: ClockIcon,
-  invoices: InboxIcon,
-};
-
-export default async function CardWrapper() {
+export function CardWrapper({ countries }: { countries: Array<Country> }) {
   return (
-    <>
-      {/* NOTE: comment in this code when you get to this point in the course */}
-
-      {/* <Card title="Collected" value={totalPaidInvoices} type="collected" />
-      <Card title="Pending" value={totalPendingInvoices} type="pending" />
-      <Card title="Total Invoices" value={numberOfInvoices} type="invoices" />
-      <Card
-        title="Total Customers"
-        value={numberOfCustomers}
-        type="customers"
-      /> */}
-    </>
+    // <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-6'>
+    <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8 pt-4">
+      {countries.map((country: Country, index) => {
+      return (
+        <Card key={index} countryName={country.name} flag={country.flag}/> 
+        )
+      })}
+    </div>
   );
 }
 
-export function Card({
-  title,
-  value,
-  type,
+export function Card(
+  {
+  countryName,
+  flag,
 }: {
-  title: string;
-  value: number | string;
-  type: 'invoices' | 'customers' | 'pending' | 'collected';
-}) {
-  const Icon = iconMap[type];
-
+  countryName: string;
+  flag: string;
+}
+) {
   return (
-    <div className="rounded-xl bg-gray-50 p-2 shadow-sm">
-      <div className="flex p-4">
-        {Icon ? <Icon className="h-5 w-5 text-gray-700" /> : null}
-        <h3 className="ml-2 text-sm font-medium">{title}</h3>
-      </div>
-      <p
-        className={`${lusitana.className}
-          truncate rounded-xl bg-white px-4 py-8 text-center text-2xl`}
-      >
-        {value}
-      </p>
+    // <div className={`${montserrat.className} flex justify-center items-center bg-center bg-no-repeat sm:max-w-[20rem] h-[10rem] rounded overflow-hidden shadow-lg rounded-2xl`} style={{ backgroundImage: `url(${flag})`}}>
+    //   <Link className="font-bold bg-white opacity-80 shadow-lg rounded-2xl p-4 active:bg-gray-400 cursor-pointer" href="/dashboard/detail">{countryName}</Link>
+    // </div>
+    <div className={`${montserrat.className} flex justify-center items-center sm:max-w-[20rem] h-[10rem] bg-no-repeat bg-cover bg-center overflow-hidden rounded-lg object-cover object-center group-hover:opacity-75 aspect-h-1 aspect-w-1 xl:aspect-h-8 xl:aspect-w-7`} style={{ backgroundImage: `url(${flag})`}}>
+      <Link className="font-bold bg-white opacity-80 shadow-lg rounded-2xl p-4 active:bg-gray-400 cursor-pointer" href={`/dashboard/detail?country=${countryName}`}>{countryName}</Link>
     </div>
+    
   );
 }
