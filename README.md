@@ -1,4 +1,4 @@
-## Application created with Next.js fremowork based on React Library JS. ##
+## Application created with Next.js framework based on React Library JS. ##
 
 Global Insight is a web application built using Next.js, a powerful React framework known for its performance, scalability, and excellent developer experience. This project aims to showcase the diverse capabilities of Global Insight Enterprises in a modern and interactive online platform.
 
